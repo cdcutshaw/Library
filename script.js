@@ -1,5 +1,10 @@
 const myLibrary = [];
 const cardContainer = document.getElementById('cardContainer');
+const dialog = document.querySelector('dialog');
+const addBtn = document.querySelector('dialog + button');
+const cancelBtn = document.getElementById('cancelBtn');
+const submitBtn = document.getElementById('submitBtn');
+
 
 
 function Book(title, author, pages, read) {
@@ -12,23 +17,12 @@ function Book(title, author, pages, read) {
     };
 }
 
-
 function addBookToLibrary (title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook)
 }
 
-// placeholder entry to add books. Will add new book button that brings up form for user to enter info later
 
-//function that loops through myLibrary and displays card
-function displayCards(){
-    cardContainer.replaceChildren()
-    for (let book of myLibrary) {
-    makeTitleCard(book);
-    }
-}
-
-//generates title card to display info
 function makeTitleCard (book){
     const newCard = document.createElement("div");
     const titlePara = document.createElement("p");
@@ -71,14 +65,44 @@ function makeTitleCard (book){
 
 }
 
+function displayCards(){
+    cardContainer.replaceChildren()
+    for (let book of myLibrary) {
+    makeTitleCard(book);
+    }
+}
+
 function deleteCard(bookCard){
     myLibrary.splice(bookCard.id, 1);
     displayCards();
 }
 
-// placeholder entry to add books. Will add new book button that brings up form for user to enter info later
-addBookToLibrary("the Hobbit", "Tolkien", 310, "read");
+
+addBtn.addEventListener("click", () =>{
+    dialog.showModal();
+});
+
+closeBtn.addEventListener("click", () => {
+    dialog.close();
+})
+
+document.getElementById("addForm").onsubmit = (event) => {
+    event.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').checked;
+
+   addBookToLibrary(title, author, pages, read);
+
+   dialog.close();
+   displayCards();
+   document.getElementById('addForm').reset();
+}
+
+
+// placeholder entries
 addBookToLibrary("Harry Potter and the Sorcerer's Stone", "JK Rowling", 223, "false");
-
-
+addBookToLibrary("Harry Potter and the Sorcerer's Stone", "JK Rowling", 223, "false");
 displayCards();
