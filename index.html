@@ -19,12 +19,29 @@
 
         <div class="libraryContent" >
             <div class="titleCard" id="add">
-                    <div >+</div>
-                </div>
-                
-            <div id="cardContainer">
-                
+                <dialog>
+                    <form method="post" id="addForm">
+                        <button id="closeBtn">X</button>
+
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" required>
+
+                        <label for="author">Author:</label>
+                        <input type="text" name="author" id="author" required>
+
+                        <label for="pages">Pages:</label>
+                        <input type="number" id="pages" name="pages" required>
+
+                        <label for="read">Read?</label>
+                        <input type="checkbox" id="read" name="pages">
+
+                        <input type="submit" id="submitBtn">
+                    </form>
+                </dialog>
+                <button id="addBtn">+</button>
             </div>
+                
+            <div id="cardContainer"></div>
         </div>
         <div class="footer"></div>
     </div>
