@@ -102,7 +102,3 @@ document.getElementById("addForm").onsubmit = (event) => {
 }
 
 
-// placeholder entries
-addBookToLibrary("Harry Potter and the Sorcerer's Stone", "JK Rowling", 223, "false");
-addBookToLibrary("Harry Potter and the Sorcerer's Stone", "JK Rowling", 223, "false");
-displayCards();
